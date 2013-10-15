@@ -13,6 +13,10 @@ import org.apache.http.client.*;
 import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import javax.crypto.SecretKey;
+import javax.crypto.Mac;
+import android.util.Base64;
+// Import get unix time
 
 public class MainActivity extends Activity {
 
@@ -50,7 +54,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Toast t = Toast.makeText(getApplicationContext(), "Pinging door", Toast.LENGTH_LONG);
 				t.show();
-				new NetworkTask().execute("https://api.electricimp.com/v1/2c611c82fe33dec5/30de5d729f3755c0?value=1");
+				new NetworkTask().execute("URL");
 			}
 		});
 		
@@ -59,7 +63,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Toast t = Toast.makeText(getApplicationContext(), "Pinging light", Toast.LENGTH_LONG);
 				t.show();
-				new NetworkTask().execute("https://api.electricimp.com/v1/2c611c82fe33dec5/30de5d729f3755c0?value=2");
+				new NetworkTask().execute("URL");
 			}
 		});
 	}
