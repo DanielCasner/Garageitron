@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
 		protected HttpResponse doInBackground(String... params) {
 			HttpClient hc = new DefaultHttpClient();
 			HttpPost post = new HttpPost(params[0]);
+			System.out.println(params[0]);
 			try {
 				HttpResponse resp = hc.execute(post);
 				return resp;
@@ -64,7 +65,7 @@ public class MainActivity extends Activity {
 			Mac mac = Mac.getInstance("HmacSHA1");
 			SecretKeySpec secret = new SecretKeySpec(sharedPrefs.getString("auth_key", "NULL").getBytes(), mac.getAlgorithm());
 			mac.init(secret);
-			int t = (int)(System.currentTimeMillis()/30000L);
+			int t = (int)(System.currentTimeMillis()/11000L);
 			byte[] digest = mac.doFinal(Integer.toString(t).getBytes());
 			b.append(Base64.encodeToString(digest, Base64.NO_WRAP));
 		} catch (Exception e) {
@@ -88,7 +89,7 @@ public class MainActivity extends Activity {
 		doorButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast t = Toast.makeText(getApplicationContext(), "Pinging door", Toast.LENGTH_LONG);
+				Toast t = Toast.makeText(getApplicationContext(), "Pinging door", Toast.LENGTH_SHORT);
 				t.show();
 				StringBuilder b = getBaseQuery();
 				b.append("&c=1");
@@ -99,7 +100,7 @@ public class MainActivity extends Activity {
 		lightButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast t = Toast.makeText(getApplicationContext(), "Pinging light", Toast.LENGTH_LONG);
+				Toast t = Toast.makeText(getApplicationContext(), "Pinging light", Toast.LENGTH_SHORT);
 				t.show();
 				StringBuilder b= getBaseQuery();
 				b.append("&c=2");

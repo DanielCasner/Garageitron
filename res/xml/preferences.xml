@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+	<PreferenceCategory 
+        android:title="Garage connection"
+        android:key="connection">
+        
+        <EditTextPreference
+            android:key="api_url"
+            android:title="Hardware API URL" 
+            android:summary="URL of the API for the garageitron hardware"
+            android:dialogTitle="Hardware API URL"
+            android:dialogMessage="Provide a URL"    
+            android:defaultValue="https://" />
+        
+        <EditTextPreference
+            android:key="auth_key"
+            android:title="Authorization key" 
+            android:summary="Authorization key to connect to the hardware"
+            android:dialogTitle="Authorization key"
+            android:dialogMessage="Provide a key"    
+            android:defaultValue="" />
+            
+    </PreferenceCategory>
+</PreferenceScreen>
