@@ -20,9 +20,8 @@ import org.apache.http.util.EntityUtils;
 import javax.crypto.SecretKey;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
+import java.net.URLEncoder;
 import android.util.Base64;
-// Import get unix time
 
 public class MainActivity extends Activity {
 
@@ -67,7 +66,7 @@ public class MainActivity extends Activity {
 			mac.init(secret);
 			int t = (int)(System.currentTimeMillis()/11000L);
 			byte[] digest = mac.doFinal(Integer.toString(t).getBytes());
-			b.append(Base64.encodeToString(digest, Base64.NO_WRAP));
+			b.append(URLEncoder.encode(Base64.encodeToString(digest, Base64.NO_WRAP)));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new StringBuilder("ERROR");
